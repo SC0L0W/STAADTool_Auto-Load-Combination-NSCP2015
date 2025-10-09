@@ -124,6 +124,7 @@ Extract the files to a convenient location on your computer.
    ```
 
 ---
+<img width="512" height="291" alt="image" src="https://github.com/user-attachments/assets/28708974-8883-46ca-b90c-f33db5a0ad4f" />
 
 ### **Step 3: Install the Macro as a Custom Tool**
 
@@ -139,6 +140,8 @@ Extract the files to a convenient location on your computer.
    - **Icon:** Choose a recognizable icon (optional)
    - **Shortcut:** Assign a keyboard shortcut like `Ctrl+Shift+L` (optional)
 6. Click **OK** to save
+<img width="1916" height="1025" alt="image" src="https://github.com/user-attachments/assets/f5865712-166e-4f8c-8cd0-9d67f828c1bf" />
+<img width="648" height="296" alt="image" src="https://github.com/user-attachments/assets/fd372286-23c3-45a6-a7ad-cfa09b59b8bf" />
 
 #### **Method B: Excel-Based Execution**
 
@@ -152,12 +155,19 @@ Extract the files to a convenient location on your computer.
 ### **Step 4: Execute the Generator**
 
 1. **Launch the tool** from the Utilities tab or your assigned shortcut
-2. **Select design method:**
+<img width="1229" height="526" alt="image" src="https://github.com/user-attachments/assets/a1196113-f885-45d5-80b9-722469153fcb" />
+<img width="1509" height="811" alt="image" src="https://github.com/user-attachments/assets/3a65635a-aacf-4eb6-8f73-3d5c1c261a6d" />
+3. **Select design method:**
    - Click **Yes** for **LRFD** (Load and Resistance Factor Design)
+   <img width="1677" height="838" alt="image" src="https://github.com/user-attachments/assets/257372fc-8f93-4e9a-bb03-9a37eb5caf29" />
+   <img width="1601" height="1029" alt="image" src="https://github.com/user-attachments/assets/39c5c1a2-ae58-4fd8-a8aa-5e9b3054918e" />
    - Click **No** for **ASD** (Allowable Stress Design)
-3. **For LRFD:** Enter the `Ev` seismic vertical effect factor when prompted
+   <img width="1516" height="867" alt="image" src="https://github.com/user-attachments/assets/92d44ee4-3191-4041-87d6-92f095def904" />
+
+4. **For LRFD:** Enter the `Ev` seismic vertical effect factor when prompted
    - Typical value: `0.2` (per NSCP 2015 Section 208.4.2)
-4. **Watch the magic happen** ✨
+5. **Watch the magic happen** ✨
+
 
 ---
 
