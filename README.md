@@ -224,10 +224,7 @@ Adapt the factoring system for other standards (IBC, ASCE 7, etc.)
 ### **Seismic Effect Factor (Ev)**
 Per NSCP 2015, the vertical seismic effect is typically:
 ```
-Ev = 0.2 × SDS × D
-```
-Where SDS is the design spectral response acceleration.
-
+Ev = 0.5 × Ca x I × D
 ---
 
 ## 🤝 Contributing
