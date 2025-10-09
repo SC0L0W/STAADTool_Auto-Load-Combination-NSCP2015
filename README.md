@@ -1,5 +1,3 @@
-Certainly! Here's the revised README with the section about "How It Works" removed and instructions added on how to add your macro as a custom tool in STAAD.Pro's Utilities tab:
-
 ---
 
 # NSCP 2015 Load Combination Generator for STAAD.Pro
