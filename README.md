@@ -100,6 +100,7 @@ git clone https://github.com/yourusername/nscp-load-combo-generator.git
 # Or download as ZIP
 # Click the green "Code" button → Download ZIP
 ```
+<img width="1331" height="760" alt="image" src="https://github.com/user-attachments/assets/47df1fbe-24d1-4595-8aab-67668e675d9a" />
 
 Extract the files to a convenient location on your computer.
 
