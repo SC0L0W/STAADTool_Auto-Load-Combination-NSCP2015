@@ -225,6 +225,8 @@ Adapt the factoring system for other standards (IBC, ASCE 7, etc.)
 Per NSCP 2015, the vertical seismic effect is typically:
 ```
 Ev = 0.5 × Ca x I × D
+```
+Where I is importance factor, D is Dead Load and Ca is Acceleration Coefficient
 ---
 
 ## 🤝 Contributing
