@@ -32,7 +32,7 @@ Whether you're designing high-rises, bridges, or industrial facilities, this too
 ### 🔌 **Seamless Integration**
 - Direct connection to STAAD.Pro API
 - Automatic load case detection and classification
-- Zero manual data entry required
+- Minimal manual data entry required
 
 ### 🎯 **Intelligent Classification**
 - Recognizes load types from case titles
@@ -175,7 +175,7 @@ Extract the files to a convenient location on your computer.
 
 1. In STAAD.Pro, go to the **Load Cases** panel
 2. Review the newly created combination series:
-   - **Series 101-199:** LRFD without seismic
+   - **Series 101-199:** LRFD 
    - **Series 201-299:** LRFD with seismic
    - **Series 301-399:** LRFD alternate series
    - **Series 401-499:** ASD basic combinations
