@@ -9,6 +9,16 @@
 
 ---
 
+### 📊 Repository Stats
+![GitHub Views](https://komarev.com/ghpvc/?username=yourusername&label=Repository%20Views&color=0e75b6&style=flat)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/yourusername/your-repo-name/total?style=flat&color=brightgreen)
+![GitHub Stars](https://img.shields.io/github/stars/yourusername/your-repo-name?style=flat&color=yellow)
+![GitHub Forks](https://img.shields.io/github/forks/yourusername/your-repo-name?style=flat&color=orange)
+![GitHub Issues](https://img.shields.io/github/issues/yourusername/your-repo-name?style=flat&color=red)
+
+
+---
+
 **Transform hours of manual load combination work into seconds.**
 
 </div>
