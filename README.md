@@ -22,6 +22,9 @@
 
 ---
 
+<img width="1677" height="838" alt="image" src="https://github.com/user-attachments/assets/ea804152-51b6-43f0-bdcc-10f83d6ccc95" />
+
+
 ## ✨ What Makes This Special
 
 This intelligent VBA macro revolutionizes how structural engineers generate load combinations in STAAD.Pro. Fully compliant with **NSCP 2015 standards**, it automatically creates precise load combinations for both **LRFD** (Strength Design) and **ASD** (Allowable Stress Design) methodologies—eliminating human error and saving valuable engineering time.
