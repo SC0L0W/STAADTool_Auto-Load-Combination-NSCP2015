@@ -12,7 +12,7 @@
 ### 📊 Repository Stats
 
 ![GitHub Views](https://komarev.com/ghpvc/?username=SC0L0W&label=Repository%20Views&color=0e75b6&style=flat)  
-![GitHub Stars](https://img.shields.io/github/stars/SC0L0W/STAADTool_Auto-Load-Combination-NSCP2015?style=flat&color=yellow)  
+![GitHub Stars](https://img.shields.io/github/stars/SC0L0W/STAADToolAuto-Offset/tree/main?style=flat&color=yellow)  
 
 ---
 
@@ -146,7 +146,7 @@ Extract the files to a convenient location on your computer.
 4. Click **New** to create a new command
 5. **Configuration:**
    - **Name:** `NSCP 2015 Load Combo Generator`
-   - **Command:** Browse to your `.bas` or `.vba` file
+   - **Command:** Browse to your `.bas` or `.vbs` file
    - **Icon:** Choose a recognizable icon (optional)
    - **Shortcut:** Assign a keyboard shortcut like `Ctrl+Shift+L` (optional)
 6. Click **OK** to save
