@@ -12,7 +12,7 @@
 ### 📊 Repository Stats
 
 ![GitHub Views](https://komarev.com/ghpvc/?username=SC0L0W&label=Repository%20Views&color=0e75b6&style=flat)  
-![GitHub Stars](https://img.shields.io/github/stars/SC0L0W/STAADToolAuto-Offset/tree/main?style=flat&color=yellow)  
+![GitHub Stars](https://img.shields.io/github/stars/SC0L0W/STAADToolAuto-Offset?style=flat&color=yellow)  
 
 ---
 
