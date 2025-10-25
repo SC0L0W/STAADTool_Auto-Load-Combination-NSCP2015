@@ -225,13 +225,13 @@ Adapt the factoring system for other standards (IBC, ASCE 7, etc.)
 ### **Load Combination Series Overview**
 
 #### **LRFD Series**
-- **101 Series:** Basic gravity + lateral (no seismic)
-- **201 Series:** Gravity + seismic effects (includes Ev)
-- **301 Series:** Alternate load paths and special cases
+- **101 Series:** Basic gravity + seismic effects
+- **201 Series:** Gravity + seismic effects (includes Orthogonal Effects)
+- **301 Series:** Gravity + seismic effects (includes Orthogonal Effects and Ev)
 
 #### **ASD Series**
-- **401 Series:** Basic combinations (0.6D, D+L, etc.)
-- **501 Series:** Alternate combinations with reduced factors
+- **401 Series:** Basic combinations
+- **501 Series:** Alternate combinations 
 
 ### **Seismic Effect Factor (Ev)**
 Per NSCP 2015, the vertical seismic effect is typically:
