@@ -120,9 +120,9 @@ Sub Main()
         Dim EvInput As String
         EvInput = InputBox("Enter Ev factor for Series 301 (LRFD with Ev):" & vbCrLf & vbCrLf & _
                            "Typical values:" & vbCrLf & _
-                           "• 0.27 (when Ev = 0.5 * Ca * I * D, Ca=0.532, I=1.0)" & vbCrLf & _
-                           "• 0.20 (for lower seismic zones)" & vbCrLf & vbCrLf & _
-                           "Enter value:", "Ev Factor for Series 301", "0.27")
+                           "Factor = 0.27 (when Ev = 0.5 * Ca * I * D, Ca=0.532, I=1.0)" & vbCrLf & _
+                           "0.20 (for lower seismic zones)" & vbCrLf & vbCrLf & _
+                           "Enter value:", "Ev Factor for Series 301", "0.20")
         If EvInput = "" Then
             MsgBox "Operation cancelled.", vbInformation, "Cancelled"
             Exit Sub
@@ -184,168 +184,168 @@ Sub GenerateLRFD_Series101( _
     
     ' 1.4D
     CombNum = CombStart
-    CombTitle = "LRFD-101: 1.4D"
+    CombTitle = "LRFD-101: 1.4DL"
     CombString = " 1.4 " & DeadLoads1 & " 1.4 " & DeadLoads2
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + 1.6L + LL1 + LL2
+    ' 1.2D + 1.6L + 1.6LL + 1.6LL1 + 1.6LL2 + 0.5LLR
     CombNum = CombStart
-    CombTitle = "LRFD-102: 1.2D+1.6L+1.6LL1+1.6LL2+0.5Roof"
+    CombTitle = "LRFD-102: 1.2DL + 1.6LL + 1.6LL1 + 1.6LL2 + 0.5Roof"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 1.6 " & LiveLoads & " 1.6 " & LL1Loads & " 1.6 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + LL + LL1 + LL2
+    ' 1.2D + 0.5LL + 0.5LL1 + LL2 + 1.6LLR
     CombNum = CombStart
-    CombTitle = "LRFD-103: 1.2D+LL+LL1+LL2+1.6Roof"
+    CombTitle = "LRFD-103: 1.2D + 0.5LL + 0.5LL1 + LL2 + 1.6Roof"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + 1.6LLR + LL1 + LL2
+    ' 1.2D + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-104: 1.2D+LLR+LL1+LL2"
+    CombTitle = "LRFD-104: 1.2D + 0.5LL + 0.5LL1 + LL2"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6LLR + 0.5Wx
     CombNum = CombStart
-    CombTitle = "LRFD-105: 1.2D+LLR+Wx"
+    CombTitle = "LRFD-105: 1.2D + 1.6LLR + Wx"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & WindX & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6LLR -0.5Wx
     CombNum = CombStart
-    CombTitle = "LRFD-106: 1.2D+LLR-0.5Wx"
+    CombTitle = "LRFD-106: 1.2D + 1.6LLR - 0.5Wx"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " -0.5 " & WindX & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6LLR +0.5Wz
     CombNum = CombStart
-    CombTitle = "LRFD-107: 1.2D+LLR+0.5Wz"
+    CombTitle = "LRFD-107: 1.2D + 1.6LLR + 0.5Wz"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & WindZ & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6LLR -0.5Wz
     CombNum = CombStart
-    CombTitle = "LRFD-108: 1.2D+LLR-0.5Wz"
+    CombTitle = "LRFD-108: 1.2D + 1.6LLR - 0.5Wz"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " -0.5 " & WindZ & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L + Ex + LL1 + LL2
+    ' 1.2D + Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-109: 1.2D+0.5L+Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-109: 1.2D + Ex + 0.5L + 0.5LL1 + LL2"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L - Ex + LL1 + LL2
+    ' 1.2D - Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-110: 1.2D+0.5L-Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-110: 1.2D - Ex +0.5L + 0.5LL1 + LL2"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L + Ez + LL1 + LL2
+    ' 1.2D + Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-111: 1.2D+0.5L+Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-111: 1.2D + Ez + 0.5L + 0.5LL1 + LL2"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L - Ez + LL1 + LL2
+    ' 1.2D - Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-112: 1.2D+0.5L-Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-112: 1.2D - Ez + 0.5L + 0.5LL1 + LL2"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L + Ex + LL1 + LL2
+    ' 0.9D + Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-113: 0.9D+0.5L+Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-113: 0.9D + Ex + 0.5L + 0.5LL1 + LL2"
     CombString = " 0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L - Ex + LL1 + LL2
+    ' 0.9D - Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-114: 0.9D+0.5L-Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-114: 0.9D - Ex + 0.5L + 0.5LL1 + LL2"
     CombString = " 0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L + Ez + LL1 + LL2
+    ' 0.9D + Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-115: 0.9D+0.5L+Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-115: 0.9D + Ez + 0.5L + 0.5LL1 + LL2"
     CombString = " 0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L - Ez + LL1 + LL2
+    ' 0.9D - Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-116: 0.9D+0.9L-Ez+0.5LL1+LL2"
-    CombString = " 0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " -1.0 " & LiveLoads & " -1.0 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
+    CombTitle = "LRFD-116: 0.9D - Ez + 0.5LL + 0.5LL1 + LL2"
+    CombString = " 0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + 0.5L + Wx + 0.5LL1 + LL2 + 0.5Roof
+    ' 1.2D + Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-117: 1.2D+0.5L+Wx+0.5LL1+LL2+0.5Roof"
+    CombTitle = "LRFD-117: 1.2D + Wx + 0.5LL1 + LL2 + 0.5Roof"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + 0.5L - Wx + LL1 + LL2 + 0.5Roof
+    ' 1.2D - Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-118: 1.2D+0.5L-Wx+LL1+LL2+0.5Roof"
+    CombTitle = "LRFD-118: 1.2D - Wx - 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + 0.5L + Wx + 0.5LL1 + LL2 + 0.5Roof
+    ' 0.9D + Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-119: 0.9D+0.5L+Wx+0.5LL1+LL2+0.5Roof"
+    CombTitle = "LRFD-119: 0.9D + Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
     CombString = " 0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + 0.5L - Wx + LL1 + LL2 + 0.5Roof
+    ' 0.9D - Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-120: 0.9D+0.5L-Wx+LL1+LL2+0.5Roof"
+    CombTitle = "LRFD-120: 0.9D - Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
     CombString = " 0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' 1.2D + 0.5L + Wz + 0.5LL1 + LL2 + 0.5Roof
+    ' 1.2D + Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-121: 1.2D+0.5L+Wz+0.5LL1+LL2+0.5Roof"
+    CombTitle = "LRFD-121: 1.2D + Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + 0.5L - Wz + LL1 + LL2 + 0.5Roof
+    ' 1.2D - Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-122: 1.2D+0.5L-Wz+LL1+LL2+0.5Roof"
+    CombTitle = "LRFD-122: 1.2D - Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
     CombString = " 1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + 0.5L + Wz + 0.5LL1 + LL2 + 0.5Roof
+    ' 0.9D + Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-123: 0.9D+0.5L+Wz+0.5LL1+LL2+0.5Roof"
+    CombTitle = "LRFD-123: 0.9D + Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
     CombString = " 0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + 0.5L - Wz + LL1 + LL2 + 0.5Roof
+    ' 0.9D - Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-124: 0.9D+0.5L-Wz+LL1+LL2+0.5Roof"
+    CombTitle = "LRFD-124: 0.9D - Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
     CombString = " 0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
@@ -385,276 +385,221 @@ Sub GenerateLRFD_Series201( _
     
     ' 1.2D + 1.6L + LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-202: 1.2D+1.6L+1.6LL1+1.6LL2+0.5Roof"
+    CombTitle = "LRFD-202: 1.2D + 1.6L + 1.6LL1 + 1.6LL2 + 0.5Roof"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 1.6 " & LiveLoads & " 1.6 " & LL1Loads & " 1.6 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + LL + LL1 + LL2 + 1.6Roof
+    ' 1.2D + 0.5LL + 0.5LL1 + LL2 + 1.6Roof
     CombNum = CombStart
-    CombTitle = "LRFD-203: 1.2D+LL+LL1+LL2+1.6Roof"
+    CombTitle = "LRFD-203: 1.2D + 0.5LL + 0.5LL1 + LL2 + 1.6Roof"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + LL + LL1 + LL2
+    ' 1.2D + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-204: 1.2D+LLR+LL1+LL2"
+    CombTitle = "LRFD-204: 1.2D + 0.5LL + 0.5LL1 + LL2"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6Roof + 0.5Wx
     CombNum = CombStart
-    CombTitle = "LRFD-205: 1.2D+LLR+0.5Wx"
+    CombTitle = "LRFD-205: 1.2D + 1.6LLR + 0.5Wx"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & WindX & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6Roof - 0.5Wx
     CombNum = CombStart
-    CombTitle = "LRFD-206: 1.2D+LLR-0.5Wx"
+    CombTitle = "LRFD-206: 1.2D + 1.6LLR - 0.5Wx"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " -0.5 " & WindX & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6Roof + 0.5Wz
     CombNum = CombStart
-    CombTitle = "LRFD-207: 1.2D+LLR+0.5Wz"
+    CombTitle = "LRFD-207: 1.2D + 1.6LLR + 0.5Wz"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & WindZ & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6Roof - 0.5Wz
     CombNum = CombStart
-    CombTitle = "LRFD-208: 1.2D+LLR-0.5Wz"
+    CombTitle = "LRFD-208: 1.2D + 1.6LLR - 0.5Wz"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " -0.5 " & WindZ & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L + Ex + 0.3Ez + LL1 + LL2
+    ' 1.2D + Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-209: 1.2D+0.5L+Ex+0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-209: 1.2D + Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqX & " 0.3 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L + Ex - 0.3Ez + LL1 + LL2
+    ' 1.2D + Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-210: 1.2D+0.5L+Ex-0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-210: 1.2D + Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqX & " -0.3 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L - Ex + 0.3Ez + LL1 + LL2
+    ' 1.2D - Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-211: 1.2D+0.5L-Ex+0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-211: 1.2D - Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqX & " 0.3 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L - Ex - 0.3Ez + LL1 + LL2
+    ' 1.2D - Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-212: 1.2D+0.5L-Ex-0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-212: 1.2D - Ex - 0.3Ez + 0.5LL + 0.5LL1 +LL2"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqX & " -0.3 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L + Ez + 0.3Ex + LL1 + LL2
+    ' 1.2D + Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-213: 1.2D+0.5L+Ez+0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-213: 1.2D + Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqZ & " 0.3 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L + Ez - 0.3Ex + LL1 + LL2
+    ' 1.2D + Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-214: 1.2D+0.5L+Ez-0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-214: 1.2D + Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqZ & " -0.3 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L - Ez + 0.3Ex + LL1 + LL2
+    ' 1.2D - Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-215: 1.2D+0.5L-Ez+0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-215: 1.2D - Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqZ & " 0.3 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + L - Ez - 0.3Ex + LL1 + LL2
+    ' 1.2D - Ez - 0.3Ex + 0.5LL + LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-216: 1.2D+0.5L-Ez-0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-216: 1.2D - Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqZ & " -0.3 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L + Ex + 0.3Ez + LL1 + LL2
+    ' 0.9D + Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-217: 0.9D+0.5L+Ex+0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-217: 0.9D + Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqX & " 0.3 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L + Ex - 0.3Ez + LL1 + LL2
+    ' 0.9D + Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-218: 0.9D+0.5L+Ex-0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-218: 0.9D + Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqX & " -0.3 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L - Ex + 0.3Ez + LL1 + LL2
+    ' 0.9D - Ex + 0.3Ez + O.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-219: 0.9D+0.5L-Ex+0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-219: 0.9D - Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqX & " 0.3 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L - Ex - 0.3Ez + LL1 + LL2
+    ' 0.9D - Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-220: 0.9D+0.5L-Ex-0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-220: 0.9D - Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqX & " -0.3 " & EqZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L + Ez + 0.3Ex + LL1 + LL2
+    ' 0.9D + Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-221: 0.9D+0.5L+Ez+0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-221: 0.9D + Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqZ & " 0.3 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L + Ez - 0.3Ex + LL1 + LL2
+    ' 0.9D + Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-222: 0.9D+0.5L+Ez-0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-222: 0.9D + Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & EqZ & " -0.3 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L - Ez + 0.3Ex + LL1 + LL2
+    ' 0.9D - Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-223: 0.9D+0.5L-Ez+0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-223: 0.9D - Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqZ & " 0.3 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + L - Ez - 0.3Ex + LL1 + LL2
+    ' 0.9D - Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-224: 0.9D+0.5L-Ez-0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-224: 0.9D - Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & EqZ & " -0.3 " & EqX & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + 0.5L + Wx + 0.3Wz + 0.5LL1 + LL2 + 0.5Roof
+    ' 1.2D + Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-225: 1.2D+0.5L+Wx+0.3Wz+0.5LL1+LL2+0.5Roof"
-    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindX & " 0.3 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
+    CombTitle = "LRFD-225: 1.2D + Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
+    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + 0.5L + Wx - 0.3Wz + 0.5LL1 + LL2 + 0.5Roof
+    ' 1.2D - Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-226: 1.2D+0.5L+Wx-0.3Wz+0.5LL1+LL2+0.5Roof"
-    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindX & " -0.3 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
+    CombTitle = "LRFD-226: 1.2D - Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
+    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + 0.5L - Wx + 0.3Wz + 0.5LL1 + LL2 + 0.5Roof
+    ' 1.2D + Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-227: 1.2D+0.5L-Wx+0.3Wz+0.5LL1+LL2+0.5Roof"
-    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindX & " 0.3 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
+    CombTitle = "LRFD-227: 1.2D + Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
+    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + 0.5L - Wx - 0.3Wz + 0.5LL1 + LL2 + 0.5Roof
+    ' 1.2D - Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-228: 1.2D+0.5L-Wx-0.3Wz+0.5LL1+LL2+0.5Roof"
-    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindX & " -0.3 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
+    CombTitle = "LRFD-228: 1.2D - Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
+    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' 0.9D + Wx  + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
+    CombNum = CombStart
+    CombTitle = "LRFD-229: 0.9D + Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
+    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + 0.5L + Wx + 0.3Wz + 0.5LL1 + LL2 + 0.5Roof
+    ' 0.9D - Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-229: 0.9D+0.5L+Wx+0.3Wz+0.5LL1+LL2+0.5Roof"
-    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindX & " 0.3 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
+    CombTitle = "LRFD-230: 0.9D - Wx + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
+    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' 0.9D + Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
+    CombNum = CombStart
+    CombTitle = "LRFD-231: 0.9D + Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
+    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + 0.5L + Wx - 0.3Wz + 0.5LL1 + LL2 + 0.5Roof
+    ' 0.9D - Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-230: 0.9D+0.5L+Wx-0.3Wz+0.5LL1+LL2+0.5Roof"
-    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindX & " -0.3 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
+    CombTitle = "LRFD-232: 0.9D - Wz + 0.5LL + 0.5LL1 + LL2 + 0.5Roof"
+    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 0.9D + 0.5L - Wx + 0.3Wz + 0.5LL1 + LL2 + 0.5Roof
-    CombNum = CombStart
-    CombTitle = "LRFD-231: 0.9D+0.5L-Wx+0.3Wz+0.5LL1+LL2+0.5Roof"
-    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindX & " 0.3 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 0.9D + 0.5L - Wx - 0.3Wz + 0.5LL1 + LL2 + 0.5Roof
-    CombNum = CombStart
-    CombTitle = "LRFD-231: 0.9D+0.5L-Wx-0.3Wz+0.5LL1+LL2+0.5Roof"
-    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindX & " -0.3 " & WindZ & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-   
-    ' 1.2D + 0.5L + Wz + 0.3Wx + 0.5LL1 + LL2 + 0.5Roof
-    CombNum = CombStart
-    CombTitle = "LRFD-232: 1.2D+0.5L+Wz+0.3Wx+0.5LL1+LL2+0.5Roof"
-    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindZ & " 0.3 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 1.2D + 0.5L + Wz - 0.3Wx + 0.5LL1 + LL2 + 0.5Roof
-    CombNum = CombStart
-    CombTitle = "LRFD-233: 1.2D+0.5L+Wz-0.3Wx+0.5LL1+LL2+0.5Roof"
-    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindZ & " -0.3 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 1.2D + 0.5L - Wz + 0.3Wx + 0.5LL1 + LL2 + 0.5Roof
-    CombNum = CombStart
-    CombTitle = "LRFD-234: 1.2D+0.5L-Wz+0.3Wx+0.5LL1+LL2+0.5Roof"
-    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindZ & " 0.3 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 1.2D + 0.5L - Wz - 0.3Wx + 0.5LL1 + LL2 + 0.5Roof
-    CombNum = CombStart
-    CombTitle = "LRFD-235: 1.2D+0.5L-Wz-0.3Wx+0.5LL1+LL2+0.5Roof"
-    CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindZ & " -0.3 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 0.9D + 0.5L + Wz + 0.3Wx + 0.5LL1 + LL2 + 0.5Roof
-    CombNum = CombStart
-    CombTitle = "LRFD-236: 0.9D+0.5L+Wz+0.3Wx+0.5LL1+LL2+0.5Roof"
-    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindZ & " 0.3 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 0.9D + 0.5L + Wz - 0.3Wx + 0.5LL1 + LL2 + 0.5Roof
-    CombNum = CombStart
-    CombTitle = "LRFD-237: 0.9D+0.5L+Wz-0.3Wx+0.5LL1+LL2+0.5Roof"
-    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " 1.0 " & WindZ & " -0.3 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 0.9D + 0.5L - Wz + 0.3Wx + 0.5LL1 + LL2 + 0.5Roof
-    CombNum = CombStart
-    CombTitle = "LRFD-238: 0.9D+0.5L-Wz+0.3Wx+0.5LL1+LL2+0.5Roof"
-    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindZ & " 0.3 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 0.9D + 0.5L - Wz - 0.3Wx + 0.5LL1 + LL2 + 0.5Roof
-    CombNum = CombStart
-    CombTitle = "LRFD-239: 0.9D+0.5L-Wz-0.3Wx+0.5LL1+LL2+0.5Roof"
-    CombString = "0.9 " & DeadLoads1 & " 0.9 " & DeadLoads2 & " 0.5 " & LiveLoads & " -1.0 " & WindZ & " -0.3 " & WindX & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 0.5 " & RoofLoads
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
     
     Debug.Print "Series 201 Complete: " & (CombStart - 1) & " combinations"
 End Sub
@@ -694,58 +639,58 @@ Sub GenerateLRFD_Series301( _
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + 1.6L + LL1 + LL2 + 0.5Roof
+    ' 1.2D + 1.6L + 1.6LL1 + 1.6LL2 + 0.5Roof
     CombNum = CombStart
-    CombTitle = "LRFD-302: 1.2D+1.6L+1.6LL1+1.6LL2+0.5Roof"
+    CombTitle = "LRFD-302: 1.2D + 1.6LL + 1.6LL1 + 1.6LL2 + 0.5Roof"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 1.6 " & LiveLoads & " 1.6 " & LL1Loads & " 1.6 " & LL2Loads & " 0.5 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + LL + LL1 + LL2 + 1.6Roof
+    ' 1.2D + 0.5LL + 0.5LL1 + LL2 + 1.6Roof
     CombNum = CombStart
-    CombTitle = "LRFD-303: 1.2D+LL+LL1+LL2+1.6Roof"
+    CombTitle = "LRFD-303: 1.2D + 0.5LL + 0.5LL1 + LL2 + 1.6Roof"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 0.5 " & LL1Loads & " 1 " & LL2Loads & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' 1.2D + LL + LL1 + LL2
+    ' 1.2D + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-304: 1.2D+LLR+LL1+LL2"
+    CombTitle = "LRFD-304: 1.2D + 0.5LLR + 0.5LL1 + LL2"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & LiveLoads & " 0.5 " & LL1Loads & " 1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6Roof + 0.5Wx
     CombNum = CombStart
-    CombTitle = "LRFD-305: 1.2D+LLR+0.5Wx"
+    CombTitle = "LRFD-305: 1.2D + 1.6LLR + 0.5Wx"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & WindX & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6Roof - 0.5Wx
     CombNum = CombStart
-    CombTitle = "LRFD-306: 1.2D+LLR-0.5Wx"
+    CombTitle = "LRFD-306: 1.2D + 1.6LLR - 0.5Wx"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " -0.5 " & WindX & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6Roof + 0.5Wz
     CombNum = CombStart
-    CombTitle = "LRFD-307: 1.2D+LLR+0.5Wz"
+    CombTitle = "LRFD-307: 1.2D + 1.6LLR + 0.5Wz"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " 0.5 " & WindZ & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
     ' 1.2D + 1.6Roof - 0.5Wz
     CombNum = CombStart
-    CombTitle = "LRFD-308: 1.2D+LLR-0.5Wz"
+    CombTitle = "LRFD-308: 1.2D + 1.6LLR - 0.5Wz"
     CombString = "1.2 " & DeadLoads1 & " 1.2 " & DeadLoads2 & " -0.5 " & WindZ & " 1.6 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' (1.2+Ev)D + L + Ex + 0.3Ez + LL1 + LL2
+    ' (1.2+Ev)D + Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-309: " & Format(D1, "0.00") & "D+0.5L+Ex+0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-309: " & Format(D1, "0.00") & "D + Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D1, "0.00") & " " & DeadLoads1 & " " & _
         Format(D1, "0.00") & " " & DeadLoads2 & " " & _
@@ -757,9 +702,9 @@ Sub GenerateLRFD_Series301( _
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (1.2+Ev)D + L + Ex - 0.3Ez + LL1 + LL2
+    ' (1.2+Ev)D + Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-310: " & Format(D1, "0.00") & "D+0.5L+Ex-0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-310: " & Format(D1, "0.00") & "D + Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D1, "0.00") & " " & DeadLoads1 & " " & _
         Format(D1, "0.00") & " " & DeadLoads2 & " " & _
@@ -771,37 +716,37 @@ Sub GenerateLRFD_Series301( _
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (1.2-Ev)D + L - Ex + 0.3Ez + LL1 + LL2
+    ' (1.2-Ev)D - Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-311: " & Format(D2, "0.00") & "D+0.5L-Ex+0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-311: " & Format(D2, "0.00") & "D - Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D2, "0.00") & " " & DeadLoads1 & " " & _
         Format(D2, "0.00") & " " & DeadLoads2 & " " & _
         "0.5 " & LiveLoads & " " & _
-        "1.0 " & EqX & " " & _
+        "-1.0 " & EqX & " " & _
         "0.3 " & EqZ & " " & _
         "0.5 " & LL1Loads & " " & _
         "1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (1.2-Ev)D + L - Ex - 0.3Ez + LL1 + LL2
+    ' (1.2-Ev)D - Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-312: " & Format(D2, "0.00") & "D+0.5L-Ex-0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-312: " & Format(D2, "0.00") & "D - Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D2, "0.00") & " " & DeadLoads1 & " " & _
         Format(D2, "0.00") & " " & DeadLoads2 & " " & _
         "0.5 " & LiveLoads & " " & _
-        "1.0 " & EqX & " " & _
+        "-1.0 " & EqX & " " & _
         "-0.3 " & EqZ & " " & _
         "0.5 " & LL1Loads & " " & _
         "1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (1.2+Ev)D + L + Ez + 0.3Ex + LL1 + LL2
+    ' (1.2+Ev)D + Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-313: " & Format(D1, "0.00") & "D+0.5L+Ez+0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-313: " & Format(D1, "0.00") & "D + Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D1, "0.00") & " " & DeadLoads1 & " " & _
         Format(D1, "0.00") & " " & DeadLoads2 & " " & _
@@ -813,9 +758,9 @@ Sub GenerateLRFD_Series301( _
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (1.2+Ev)D + L + Ez - 0.3Ex + LL1 + LL2
+    ' (1.2+Ev)D + Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-314: " & Format(D1, "0.00") & "D+0.5L+Ez-0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-314: " & Format(D1, "0.00") & "D + Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D1, "0.00") & " " & DeadLoads1 & " " & _
         Format(D1, "0.00") & " " & DeadLoads2 & " " & _
@@ -827,37 +772,37 @@ Sub GenerateLRFD_Series301( _
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (1.2-Ev)D + L - Ez + 0.3Ex + LL1 + LL2
+    ' (1.2-Ev)D - Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-315: " & Format(D2, "0.00") & "D+0.5L-Ez+0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-315: " & Format(D2, "0.00") & "D - Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D2, "0.00") & " " & DeadLoads1 & " " & _
         Format(D2, "0.00") & " " & DeadLoads2 & " " & _
         "0.5 " & LiveLoads & " " & _
-        "1.0 " & EqZ & " " & _
+        "-1.0 " & EqZ & " " & _
+        "0.3 " & EqX & " " & _
+        "0.5 " & LL1Loads & " " & _
+        "1 " & LL2Loads
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' (1.2-Ev)D - Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2
+    CombNum = CombStart
+    CombTitle = "LRFD-316: " & Format(D2, "0.00") & "D - Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2"
+    CombString = _
+        Format(D2, "0.00") & " " & DeadLoads1 & " " & _
+        Format(D2, "0.00") & " " & DeadLoads2 & " " & _
+        "0.5 " & LiveLoads & " " & _
+        "-1.0 " & EqZ & " " & _
         "-0.3 " & EqX & " " & _
         "0.5 " & LL1Loads & " " & _
         "1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (1.2-Ev)D + L - Ez - 0.3Ex + LL1 + LL2
+    ' (0.9+Ev)D + Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-316: " & Format(D2, "0.00") & "D+0.5L-Ez-0.3Ex+0.5LL1+LL2"
-    CombString = _
-        Format(D2, "0.00") & " " & DeadLoads1 & " " & _
-        Format(D2, "0.00") & " " & DeadLoads2 & " " & _
-        "0.5 " & LiveLoads & " " & _
-        "1.0 " & EqZ & " " & _
-        "-0.3 " & EqX & " " & _
-        "0.5 " & LL1Loads & " " & _
-        "1 " & LL2Loads
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-
-    ' (0.9+Ev)D + L + Ex + 0.3Ez + LL1 + LL2
-    CombNum = CombStart
-    CombTitle = "LRFD-317: " & Format(D3, "0.00") & "D+0.5L+Ex+0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-317: " & Format(D3, "0.00") & "D + Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D3, "0.00") & " " & DeadLoads1 & " " & _
         Format(D3, "0.00") & " " & DeadLoads2 & " " & _
@@ -869,9 +814,9 @@ Sub GenerateLRFD_Series301( _
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (0.9+Ev)D + L + Ex - 0.3Ez + LL1 + LL2
+    ' (0.9+Ev)D + Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-318: " & Format(D3, "0.00") & "D+0.5L+Ex-0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-318: " & Format(D3, "0.00") & "D + Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D3, "0.00") & " " & DeadLoads1 & " " & _
         Format(D3, "0.00") & " " & DeadLoads2 & " " & _
@@ -883,37 +828,37 @@ Sub GenerateLRFD_Series301( _
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (0.9-Ev)D + L - Ex + 0.3Ez + LL1 + LL2
+    ' (0.9-Ev)D - Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-319: " & Format(D4, "0.00") & "D+0.5L-Ex+0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-319: " & Format(D4, "0.00") & "D - Ex + 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D4, "0.00") & " " & DeadLoads1 & " " & _
         Format(D4, "0.00") & " " & DeadLoads2 & " " & _
         "0.5 " & LiveLoads & " " & _
-        "1.0 " & EqX & " " & _
+        "-1.0 " & EqX & " " & _
         "0.3 " & EqZ & " " & _
         "0.5 " & LL1Loads & " " & _
         "1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (0.9-Ev)D + L - Ex - 0.3Ez + LL1 + LL2
+    ' (0.9-Ev)D - Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-320: " & Format(D4, "0.00") & "D+0.5L-Ex-0.3Ez+0.5LL1+LL2"
+    CombTitle = "LRFD-320: " & Format(D4, "0.00") & "D - Ex - 0.3Ez + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D4, "0.00") & " " & DeadLoads1 & " " & _
         Format(D4, "0.00") & " " & DeadLoads2 & " " & _
         "0.5 " & LiveLoads & " " & _
-        "1.0 " & EqX & " " & _
+        "-1.0 " & EqX & " " & _
         "-0.3 " & EqZ & " " & _
         "0.5 " & LL1Loads & " " & _
         "1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (0.9+Ev)D + L + Ez + 0.3Ex + LL1 + LL2
+    ' (0.9+Ev)D + Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-321: " & Format(D3, "0.00") & "D+0.5L+Ez+0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-321: " & Format(D3, "0.00") & "D + Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D3, "0.00") & " " & DeadLoads1 & " " & _
         Format(D3, "0.00") & " " & DeadLoads2 & " " & _
@@ -925,9 +870,9 @@ Sub GenerateLRFD_Series301( _
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (0.9+Ev)D + L + Ez - 0.3Ex + LL1 + LL2
+    ' (0.9+Ev)D + Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-322: " & Format(D3, "0.00") & "D+0.5L+Ez-0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-322: " & Format(D3, "0.00") & "D + Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D3, "0.00") & " " & DeadLoads1 & " " & _
         Format(D3, "0.00") & " " & DeadLoads2 & " " & _
@@ -939,28 +884,28 @@ Sub GenerateLRFD_Series301( _
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (0.9-Ev)D + L - Ez + 0.3Ex + LL1 + LL2
+    ' (0.9-Ev)D - Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-323: " & Format(D4, "0.00") & "D+0.5L-Ez+0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-323: " & Format(D4, "0.00") & "D - Ez + 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D4, "0.00") & " " & DeadLoads1 & " " & _
         Format(D4, "0.00") & " " & DeadLoads2 & " " & _
         "0.5 " & LiveLoads & " " & _
-        "1.0 " & EqZ & " " & _
+        "-1.0 " & EqZ & " " & _
         "0.3 " & EqX & " " & _
         "0.5 " & LL1Loads & " " & _
         "1 " & LL2Loads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
 
-    ' (0.9-Ev)D + L - Ez - 0.3Ex + LL1 + LL2
+    ' (0.9-Ev)D - Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2
     CombNum = CombStart
-    CombTitle = "LRFD-324: " & Format(D4, "0.00") & "D+0.5L-Ez-0.3Ex+0.5LL1+LL2"
+    CombTitle = "LRFD-324: " & Format(D4, "0.00") & " D - Ez - 0.3Ex + 0.5LL + 0.5LL1 + LL2"
     CombString = _
         Format(D4, "0.00") & " " & DeadLoads1 & " " & _
         Format(D4, "0.00") & " " & DeadLoads2 & " " & _
         "0.5 " & LiveLoads & " " & _
-        "1.0 " & EqZ & " " & _
+        "-1.0 " & EqZ & " " & _
         "-0.3 " & EqX & " " & _
         "0.5 " & LL1Loads & " " & _
         "1 " & LL2Loads
@@ -979,75 +924,116 @@ Sub GenerateASD_Basic(Func As Object, DeadLoads1 As Long, DeadLoads2 As Long, Li
     
     ' D
     CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": D"
+    CombTitle = "ASD-" & CombNum & ": DL1 + DL2"
     CombString = "1.0 " & DeadLoads1
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' D + L
+    ' D + LL
     CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": D+L"
-    CombString = "1.0 " & DeadLoads1 & " 1.0 " & LiveLoads
+    CombTitle = "ASD-" & CombNum & ": DL1 + DL2 + LL + LL1 + LL2"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " 1 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LLR
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": DL1 + DL2 + LLR"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " 1 " & RoofLoads
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + 0.75LL + 0.75LLR
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": DL1 + DL2 + LL + LL1 + LL2"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " 0.75 " & LiveLoads & " 0.75 " & LL1Loads & " 0.75 " & LL2Loads & " 0.75 " & RoofLoads
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' D + 0.75L + 0.525E (with orthogonal)
-    ' D + 0.75L + 0.525Ex + 0.1575Ez
+    ' D + 0.715Ex + 0.215Ez
     CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": D+0.75L+0.525Ex+0.158Ez"
-    CombString = "1.0 " & DeadLoads1 & " 0.75 " & LiveLoads & " 0.525 " & EqX & " 0.1575 " & EqZ
+    CombTitle = "ASD-" & CombNum & ": D + 0.715Ex + 0.215Ez"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " 0.715 " & EqX & " 0.215 " & EqZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + 0.715Ex - 0.215Ez
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + 0.715Ex - 0.215Ez"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " 0.715 " & EqX & " -0.215 " & EqZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D - 0.715Ex + 0.215Ez
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + 0.715Ex + 0.215Ez"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " -0.715 " & EqX & " 0.215 " & EqZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D - 0.715Ex - 0.215Ez
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + 0.715Ex - 0.215Ez"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " -0.715 " & EqX & " -0.215 " & EqZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + 0.715Ez + 0.215Ex
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + 0.715Ez + 0.215Ex"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " 0.715 " & EqZ & " 0.215 " & EqX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + 0.715Ez - 0.215Ex
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + 0.715Ez - 0.215Ex"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " 0.715 " & EqZ & " -0.215 " & EqX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D - 0.715Ez + 0.215Ex
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D - 0.715Ez + 0.215Ex"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " -0.715 " & EqZ & " 0.215 " & EqX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D - 0.715Ez - 0.215Ex
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D - 0.715Ez - 0.215Ex"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " -0.715 " & EqZ & " -0.215 " & EqX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + 0.6Wx
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + 0.6Wx"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " 0.6 " & WindX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D - 0.6Wx
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D - 0.6Wx"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " -0.6 " & WindX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + 0.6Wz
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + 0.6Wz"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " 0.6 " & WindZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D - 0.6Wz
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D - 0.6Wz"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & " -0.6 " & WindZ
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' D + 0.75L + 0.525Ex - 0.1575Ez
-    CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": D+0.75L+0.525Ex-0.158Ez"
-    CombString = "1.0 " & DeadLoads1 & " 0.75 " & LiveLoads & " 0.525 " & EqX & " -0.1575 " & EqZ
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' D + 0.75L + 0.525Ez + 0.1575Ex
-    CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": D+0.75L+0.525Ez+0.158Ex"
-    CombString = "1.0 " & DeadLoads1 & " 0.75 " & LiveLoads & " 0.525 " & EqZ & " 0.1575 " & EqX
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' D + 0.75L + 0.525Ez - 0.1575Ex
-    CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": D+0.75L+0.525Ez-0.158Ex"
-    CombString = "1.0 " & DeadLoads1 & " 0.75 " & LiveLoads & " 0.525 " & EqZ & " -0.1575 " & EqX
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 0.6D + 0.7(Ex ± 0.3Ez)
-    ' 0.6D + 0.7Ex + 0.21Ez
-    CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": 0.6D+0.7Ex+0.21Ez"
-    CombString = "0.6 " & DeadLoads1 & " 0.7 " & EqX & " 0.21 " & EqZ
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 0.6D - 0.7Ex
-    CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": 0.6D-0.7Ex"
-    CombString = "0.6 " & DeadLoads1 & " -0.7 " & EqX
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 0.6D + 0.7Ez
-    CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": 0.6D+0.7Ez"
-    CombString = "0.6 " & DeadLoads1 & " 0.7 " & EqZ
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
-    
-    ' 0.6D - 0.7Ez
-    CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": 0.6D-0.7Ez"
-    CombString = "0.6 " & DeadLoads1 & " -0.7 " & EqZ
-    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
-    CombStart = CombStart + 1
     
     Debug.Print "ASD Basic Complete: " & (CombStart - 1) & " combinations"
 End Sub
@@ -1059,61 +1045,192 @@ Sub GenerateASD_Alternate(Func As Object, DeadLoads1 As Long, DeadLoads2 As Long
     Dim CombTitle As String
     Dim CombString As String
     
-    ' D
+    ' DL + DL2
     CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": D"
-    CombString = "1.0 " & DeadLoads1
+    CombTitle = "ASD-" & CombNum & ": DL1 + DL2"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+
+
+
+    ' D + LL + LL1 + LL2 + LLR (if exists)
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": DL + LL + LL1 + LL2 + LLR"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " 1 " & RoofLoads
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 + 0.6Wx (if exists)
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": DL + LL + LL1 + LL2 + 0.6Wx"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " 0.6 " & WindX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 - 0.6Wx (if exists)
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": DL + LL + LL1 + LL2 - 0.6Wx"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " -0.6 " & WindX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 + 0.6Wz (if exists)
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": DL + LL + LL1 + LL2 + 0.6Wz"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " 0.6 " & WindZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 - 0.6Wz (if exists)
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": DL + LL + LL1 + LL2 - 0.6Wz"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " -0.6 " & WindZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 + 0.715Ex + 0.215Ez
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + LL + LL1 + LL2 + 0.715Ex + 0.215Ez"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " 0.715 " & EqX & " 0.215 " & EqZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 + 0.715Ex - 0.215Ez
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + LL + LL1 + LL2 + 0.715Ex - 0.215Ez"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " 0.715 " & EqX & " -0.215 " & EqZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 - 0.715Ex + 0.215Ez
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + LL + LL1 + LL2 + 0.715Ex + 0.215Ez"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " -0.715 " & EqX & " 0.215 " & EqZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 - 0.715Ex - 0.215Ez
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + LL + LL1 + LL2 + 0.715Ex - 0.215Ez"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " -0.715 " & EqX & " -0.215 " & EqZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 + 0.715Ez + 0.215Ex
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + LL + LL1 + LL2 + 0.715Ez + 0.215Ex"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " 0.715 " & EqZ & " 0.215 " & EqX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 + 0.715Ez - 0.215Ex
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + LL + LL1 + LL2 + 0.715Ez - 0.215Ex"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " 0.715 " & EqZ & " -0.215 " & EqX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 - 0.715Ez + 0.215Ex
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + LL + LL1 + LL2 - 0.715Ez + 0.215Ex"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " -0.715 " & EqZ & " 0.215 " & EqX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' D + LL + LL1 + LL2 - 0.715Ez - 0.215Ex
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": D + LL + LL1 + LL2 - 0.715Ez - 0.215Ex"
+    CombString = "1.0 " & DeadLoads1 & "1.0 " & DeadLoads2 & "1.0 " & LiveLoads & " 1 " & LL1Loads & " 1 " & LL2Loads & " -0.715 " & EqZ & " -0.215 " & EqX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' 0.6D + 0.6Wx
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": 0.6D + 0.6Wx"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " 0.6 " & WindX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' 0.6D - 0.6Wx
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": 0.6D - 0.6Wx"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " -0.6 " & WindX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' 0.6D + 0.6Wz
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": 0.6D + 0.6Wz"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " 0.6 " & WindZ
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+    ' 0.6D - 0.6Wz
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": 0.6D - 0.6Wz"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " -0.6 " & WindZ
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
     
-    ' D + L + Lr (if exists)
+    ' 0.6D + 0.715Ex + 0.215Ez
     CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": D+L+Lr"
-    CombString = "1.0 " & DeadLoads1 & " 1.0 " & LiveLoads & " 1.0 " & RoofLoads
+    CombTitle = "ASD-" & CombNum & ": 0.6D + 0.715Ex + 0.215Ez"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " 0.715 " & EqX & " 0.215 " & EqZ
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
-    
-    ' D + L + 0.7Ex
+
+    ' 0.6D + 0.715Ex - 0.215Ez
     CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": D+L+0.7Ex"
-    CombString = "1.0 " & DeadLoads1 & " 1.0 " & LiveLoads & " 0.7 " & EqX
+    CombTitle = "ASD-" & CombNum & ": 0.6D + 0.715Ex - 0.215Ez"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " 0.715 " & EqX & " -0.215 " & EqZ
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
-    
-    ' D + L - 0.7Ex
+
+    ' 0.6D - 0.715Ex + 0.215Ez
     CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": D+L-0.7Ex"
-    CombString = "1.0 " & DeadLoads1 & " 1.0 " & LiveLoads & " -0.7 " & EqX
+    CombTitle = "ASD-" & CombNum & ": 0.6D + 0.715Ex + 0.215Ez"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " -0.715 " & EqX & " 0.215 " & EqZ
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
-    
-    ' 0.6D + 0.7Ex
+
+    ' 0.6D - 0.715Ex - 0.215Ez
     CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": 0.6D+0.7Ex"
-    CombString = "0.6 " & DeadLoads1 & " 0.7 " & EqX
+    CombTitle = "ASD-" & CombNum & ": 0.6D + 0.715Ex - 0.215Ez"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " -0.715 " & EqX & " -0.215 " & EqZ
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
-    
-    ' 0.6D - 0.7Ex
+
+    ' 0.6D + 0.715Ez + 0.215Ex
     CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": 0.6D-0.7Ex"
-    CombString = "0.6 " & DeadLoads1 & " -0.7 " & EqX
+    CombTitle = "ASD-" & CombNum & ": D + 0.715Ez + 0.215Ex"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " 0.715 " & EqZ & " 0.215 " & EqX
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
-    
-    ' 0.6D + 0.7Ez
+
+    ' 0.6D + 0.715Ez - 0.215Ex
     CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": 0.6D+0.7Ez"
-    CombString = "0.6 " & DeadLoads1 & " 0.7 " & EqZ
+    CombTitle = "ASD-" & CombNum & ": D + 0.715Ez - 0.215Ex"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " 0.715 " & EqZ & " -0.215 " & EqX
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
-    
-    ' 0.6D - 0.7Ez
+
+    ' 0.6D - 0.715Ez + 0.215Ex
     CombNum = CombStart
-    CombTitle = "ASD-" & CombNum & ": 0.6D-0.7Ez"
-    CombString = "0.6 " & DeadLoads1 & " -0.7 " & EqZ
+    CombTitle = "ASD-" & CombNum & ": 0.6D - 0.715Ez + 0.215Ex"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " -0.715 " & EqZ & " 0.215 " & EqX
     Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
     CombStart = CombStart + 1
+
+    ' 0.6D - 0.715Ez - 0.215Ex
+    CombNum = CombStart
+    CombTitle = "ASD-" & CombNum & ": 0.6D - 0.715Ez - 0.215Ex"
+    CombString = "0.6 " & DeadLoads1 & "0.6 " & DeadLoads2 & " -0.715 " & EqZ & " -0.215 " & EqX
+    Call CreateLoadCombination(Func, CombNum, CombTitle, CombString)
+    CombStart = CombStart + 1
+
+
     
     Debug.Print "ASD Alternate Complete: " & (CombStart - 1) & " combinations"
 End Sub
