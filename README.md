@@ -26,6 +26,16 @@
 
 <img width="1677" height="838" alt="image" src="https://github.com/user-attachments/assets/ea804152-51b6-43f0-bdcc-10f83d6ccc95" />
 
+---
+
+## 🧮 Special Notes
+
+- It will only work if the primary loads are exactly the same as in the template — no missing and no extra load cases.
+
+- There are two versions available: one for static load combinations and another for RSA (Response Spectrum Analysis) combinations.
+
+
+---
 
 ## ✨ What Makes This Special
 
@@ -87,6 +97,8 @@ Whether you're designing high-rises, bridges, or industrial facilities, this too
 | **EZ** | Seismic Load (Z-direction) | Seismic |
 | **WX** | Wind Load (X-direction) | Wind |
 | **WZ** | Wind Load (Z-direction) | Wind |
+| **RSX** | Seismic Load (X-direction) | Seismic | (availlable only for v1)
+| **RSZ** | Seismic Load (Z-direction) | Seismic | (availlable only for v1)
 
 *💡 Tip: Use these exact titles in your STAAD.Pro model for automatic detection. Future versions will support custom naming schemes.*
 
